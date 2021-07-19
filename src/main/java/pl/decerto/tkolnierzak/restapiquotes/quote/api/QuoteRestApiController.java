@@ -44,26 +44,6 @@ public class QuoteRestApiController {
         return resources;
     }
 
-    //Delete all author's quotes by id
-    @DeleteMapping("/{id}")
-    public void deleteAllAuthorsQuotes(@PathVariable("id") long id) {
-        quoteService.deleteQuote(id);
-    }
-
-    //Update all author's quotes by id
-    @PatchMapping("/{id}")
-    public void updateQuote(@PathVariable long id,
-                               @RequestBody Quote newPartialQuote) {
-        quoteService.updateQuote(id, newPartialQuote);
-    }
-
-    //Replace all author's quotes
-    @PutMapping("/{id}")
-    public void replaceQuote(@PathVariable long id,
-                                @RequestBody Quote newQuote) {
-        quoteService.replaceQuote(id, newQuote);
-    }
-
     //Find quotes by author name
     @GetMapping(params = "author")
     public Resources<Resource<Quote>> findQuoteByAuthor(
@@ -75,6 +55,26 @@ public class QuoteRestApiController {
         addFindDocsLink(resources, REL_SELF, author);
         addDocsLink(resources, REL_ALL_QUOTES);
         return resources;
+    }
+
+    //Delete all author's quotes by id
+    @DeleteMapping("/{id}")
+    public void deleteAllAuthorsQuotes(@PathVariable("id") long id) {
+        quoteService.deleteQuote(id);
+    }
+
+    //Update author's quotes or name by id
+    @PatchMapping("/{id}")
+    public void updateQuote(@PathVariable long id,
+                               @RequestBody Quote newPartialQuote) {
+        quoteService.updateQuote(id, newPartialQuote);
+    }
+
+    //Replace all author's name and quotes by id
+    @PutMapping("/{id}")
+    public void replaceQuote(@PathVariable long id,
+                                @RequestBody Quote newQuote) {
+        quoteService.replaceQuote(id, newQuote);
     }
 
     //Add author and quote
