@@ -67,7 +67,7 @@ Password: password
                 }
             }
             
-### List of all quotes by author id [GET]
+### List of all quotes by author's id [GET]
 
 + Response 200 (application/json)
 + Location: /{id}
@@ -87,7 +87,7 @@ Password: password
                 }
             }
             
-### List of all quotes by author name [GET]
+### List of all quotes by author's name [GET]
 
 + Response 200 (application/json)
 + Query Params: ?author=Benjamin Franklin
@@ -109,7 +109,7 @@ Password: password
 
 ## [POST]
 
-### Create new quotes [POST]
+### Create new quotes of one author [POST]
 
 + Request (application/json)
 
@@ -124,7 +124,7 @@ Password: password
 
 + Response 201 (application/json)
 
-### Create new quote of specific author by id [POST]
+### Create new quote of specific author by author's id [POST]
 
 + Request (text plain value)
 + Location: /{quoteId}/quotes
@@ -135,7 +135,7 @@ Tell me and I forget. Teach me and I remember. Involve me and I learn.
 
 
 ## [PATCH]
-### Update author's quotes or name by id [PATCH]
+### Update author's quotes or name by author's id [PATCH]
 + Request (application/json)
 + Location: /{id}
             {
@@ -146,7 +146,7 @@ Tell me and I forget. Teach me and I remember. Involve me and I learn.
 + Response 200 (application/json)
 
 ## [PUT]
-### Replace all author's name and quotes by id [PUT]
+### Replace all author's name and quotes by author's id [PUT]
 + Request (application/json)
 + Location: /{id}
             {
@@ -157,6 +157,6 @@ Tell me and I forget. Teach me and I remember. Involve me and I learn.
 + Response 200 (application/json)
 
 ## [DELETE]
-### Delete all author's quotes by id [DELETE]
+### Delete all author's quotes by author's id [DELETE]
 + Response 200 (application/json)
 + Location: /{id}
