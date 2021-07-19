@@ -1,5 +1,5 @@
 # Quotes Rest API
-Rest API allowing users to view, create, update, replace and delete quotes by Famous People.
+Rest API allowing users to view, create, update, replace and delete quotes.
 
 # Instructions for starting the application
 ### 1. Create and start a PostgreSQL database:
