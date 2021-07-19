@@ -1,5 +1,6 @@
 package pl.decerto.tkolnierzak.restapiquotes.quote.api;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -20,12 +21,10 @@ public class QuoteRestApiController {
     private static final String REL_ALL_QUOTES = "allQuotes";
     private static final String REL_QUOTES_BY_TITLE = "quotesByAuthor";
     private static final String REL_SELF = "self";
+    @Autowired
     private QuoteService quoteService;
 
-    public QuoteRestApiController(QuoteService quoteService) {
-        this.quoteService = quoteService;
-    }
-
+    //Get all author's quotes by id
     @GetMapping("/{id}")
     public ResponseEntity<Resource<Quote>> getQuote(
             @PathVariable long id) {
@@ -34,6 +33,7 @@ public class QuoteRestApiController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    //Get all quotes
     @GetMapping
     public Resources<Resource<Quote>> getQuotes() {
         Resources<Resource<Quote>> resources = new Resources<>(
@@ -44,23 +44,27 @@ public class QuoteRestApiController {
         return resources;
     }
 
+    //Delete all author's quotes by id
     @DeleteMapping("/{id}")
     public void deleteAllAuthorsQuotes(@PathVariable("id") long id) {
         quoteService.deleteQuote(id);
     }
 
+    //Update all author's quotes by id
     @PatchMapping("/{id}")
     public void updateQuote(@PathVariable long id,
                                @RequestBody Quote newPartialQuote) {
         quoteService.updateQuote(id, newPartialQuote);
     }
 
+    //Replace all author's quotes
     @PutMapping("/{id}")
     public void replaceQuote(@PathVariable long id,
                                 @RequestBody Quote newQuote) {
         quoteService.replaceQuote(id, newQuote);
     }
 
+    //Find quotes by author name
     @GetMapping(params = "author")
     public Resources<Resource<Quote>> findQuoteByAuthor(
             @RequestParam("author") String author) {
@@ -73,6 +77,7 @@ public class QuoteRestApiController {
         return resources;
     }
 
+    //Add author and quote
     @PostMapping
     public ResponseEntity<?> addQuote(@RequestBody Quote quote) {
         Quote addedQuote = quoteService.addQuote(quote);
@@ -81,6 +86,7 @@ public class QuoteRestApiController {
                 .build();
     }
 
+    //Add quote of specific author by id
     @PostMapping(value = "/{quoteId}/quotes", consumes =
             MediaType.TEXT_PLAIN_VALUE)
     @ResponseStatus(HttpStatus.CREATED)

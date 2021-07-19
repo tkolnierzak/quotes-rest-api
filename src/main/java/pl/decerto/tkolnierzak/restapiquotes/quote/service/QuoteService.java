@@ -1,5 +1,6 @@
 package pl.decerto.tkolnierzak.restapiquotes.quote.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.decerto.tkolnierzak.restapiquotes.quote.entity.Quote;
 import pl.decerto.tkolnierzak.restapiquotes.quote.repository.QuoteRepository;
@@ -9,11 +10,8 @@ import java.util.stream.Stream;
 
 @Service
 public class QuoteService {
+    @Autowired
     private QuoteRepository quoteRepository;
-
-    public QuoteService(QuoteRepository quoteRepository) {
-        this.quoteRepository = quoteRepository;
-    }
 
     public Stream<Quote> findQuotesByAuthor(String author) {
         return quoteRepository.findByAuthor(author).stream();
