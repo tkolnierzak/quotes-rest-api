@@ -1,7 +1,22 @@
 # Quotes Rest API
 Rest API allowing users to view, create, update, replace and delete quotes by Famous People.
 
-HOST: http://localhost:8080/api/quotes/
+# Instructions for starting the application
+### 1. Create and start a PostgreSQL database:
+```
+Name: postgres
+Port: 5432
+Username: postgres
+Password: password
+```
+### 2. Download and install dependencies in Maven
+### 3. Run Spring Boot Application
+
+
+
+# Endpoints Documentation
+
+### HOST: http://localhost:8080/api/quotes/
 
 ## [GET]
 
